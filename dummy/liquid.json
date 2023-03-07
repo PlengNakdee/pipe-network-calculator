@@ -1,0 +1,52 @@
+
+[
+    {
+        "temperature": 0,
+        "vapourPressure": 0.006,
+        "viscosity": 1.752,
+        "density": 999.8,
+        "elasticity": 2,
+        "specificHeat": 4.218
+    },
+    {
+        "temperature": 20,
+        "vapourPressure": 0.023,
+        "viscosity": 0.986,
+        "density": 998.3,
+        "elasticity": 2.18,
+        "specificHeat": 4.182
+    },
+    {
+        "temperature": 60,
+        "vapourPressure": 0.199,
+        "viscosity": 0.469,
+        "density": 983.2,
+        "elasticity": 2.26,
+        "specificHeat": 4.184
+    },
+    {
+        "temperature": 100,
+        "vapourPressure": 1.013,
+        "viscosity": 0.295,
+        "density": 958.6,
+        "elasticity": 2.10,
+        "specificHeat": 4.216
+    },
+    {
+        "temperature": 140,
+        "vapourPressure": 3.614,
+        "viscosity": 0.215,
+        "density": 926.0,
+        "elasticity": 2.06,
+        "specificHeat": 4.269
+    },
+    {
+        "temperature": 200,
+        "vapourPressure": 15.549,
+        "viscosity": 0.158,
+        "density": 871.1,
+        "elasticity": 2,
+        "specificHeat": 4.473
+    }
+
+]
