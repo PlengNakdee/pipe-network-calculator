@@ -8,7 +8,6 @@ epsi = 0.000001
 def cal_decf(value):
     if abs(value) > epsi:
         dec = (2-round(math.log(abs(value)/math.log(10)), 6))
-        print('cal', dec)
     else:
         dec = 1
     
@@ -18,13 +17,16 @@ def cal_decf(value):
         dec = 6
     
     decf = dec
-    print(decf)
     return decf
 
-def get_liquid(file_name):
-    with open(file_name) as liquid_file:
-        liquid_contents = liquid_file.read()
-        print('liquid', liquid_contents)
+def read_file(file_name):
+    with open(file_name) as f:
+        file_contents = f.read()
+        print('file-contents', file_contents)
+        return file_contents
 
-cal_decf(99)
-get_liquid('./dummy/liquid.json')
+def cal_punp_hp(pr, q):
+
+
+# cal_decf(9)
+# read_file('./dummy/liquid.json')
