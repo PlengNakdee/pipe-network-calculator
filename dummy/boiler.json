@@ -1,0 +1,24 @@
+{
+    "12fgt": {
+        "id": "12fgt",
+        "name": "Boiler 1",
+        "zone": "1",
+        "boilerFlowCapacity": 0.042,
+        "alarmType": "BoilerAlarm.NormalOperation",
+        "maxHeat": 140000,
+        "outletTemperature": 150,
+        "bypassFlowCapacity": 0.05,
+        "connectingPipeTemperature": 120
+    },
+    "89hg5": {
+        "id": "89hg5",
+        "name": "Boiler 2",
+        "zone": "SA1",
+        "boilerFlowCapacity": 0.052,
+        "alarmType": "BoilerAlarm.ConstantHeat",
+        "maxHeat": 120000,
+        "outletTemperature": 140,
+        "bypassFlowCapacity": 0.06,
+        "connectingPipeTemperature": 100
+    }
+}
