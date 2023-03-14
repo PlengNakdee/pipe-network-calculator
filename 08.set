@@ -1,0 +1,148 @@
+C    Steady Flow - Set Points                 File Name: 08.set
+C    ========================                 File Type: Text
+C    
+C    Set points listed below overrule initial set points from
+C    *.con in order to create new conditions of operation for
+C    the network.
+C
+C    Name: No name       
+C    Date: 2023-01-01
+C    Job : Cripplecreek, sf08   Edition: 23-01-01
+C
+C -------------------------------------------------------------
+C 
+C    Case Declaration Table         Max 20 cases. All cases
+C    ----------------------         must be declared here.
+C 
+C    CaseId    Xvar   Xvar  Xvar    Comment       (max 40 char)
+C    1....6      x1     x2    x3     1........0.........0.........0.........0
+C
+     .....X   -20.0   0.0    7.0    Tute=-20 - +20, Boiler 1+2,SA71 On/Off
+C
+C 
+C    Physical Meaning of Independent variables
+C    -----------------------------------------
+C
+C    x1   (max 20 char)     x2    (max 20 char)     x3    (max 20 char)
+C    1........0.........0   1.........0.........0   1.........0.........0  
+C    
+     Outdoor temperature    Not in use              Hour of day (0-24)
+C
+C
+C   Tabulated Set Value Functions    x1-3: 11 values (10 intervals)
+C   -----------------------------    Max 30 f per x         Comments
+C                                                        
+    x1      -20.0   -15.0   -10.0    -5.0    -2.0     0.0   Toutdoor
+             +2.0    +5.0   +10.0   +15.0   +20.0
+    x1f01    93.0    86.0    78.0    71.0    64.0    63.0   Tinit
+             62.0    61.0    61.0    62.0    64.0
+    x1f02  2960.0  2957.0  2955.0  2953.0  2951.0  2950.0   Hinit
+           2950.0  2950.0  2950.0  2950.0  2950.0
+    x1f03   1.000   0.895   0.780   0.660   0.590   0.540   Ftod vs Toutdoor
+             0.49    0.41    0.24   0.100   0.090
+    x1f04    62.0    57.0    52.5    48.5    46.6    45.0   Tr vs Toutdoor
+             43.5    43.0    43.6    48.2    52.0
+    x1f05   112.0   103.6    95.2    86.8    81.8    78.4   Tf, SA1
+             75.0    75.0    75.0    75.0    75.0
+    x1s10   0.042   0.042   0.042   0.042   0.042   0.042   Boiler Av
+            0.042   0.021   0.021   0.021   0.021
+    x1s11   1.4E5   1.4E5   1.4E5   1.4E5   1.4E5   1.4E5   Boiler Wmax  SA1
+            1.4E5   0.7E5   0.7E5   0.7E5   0.7E5
+    x1f19    2.00    2.00    2.00    2.00    2.00    2.00   Fctrl Pump A11
+             2.00    2.00    0.50    0.50    0.50        
+    x1f20  1.41E6  1.42E6  1.43E6  1.44E6  1.45E6  1.46E6   Demo
+           1.47E6  1.48E6  1.49E6  1.50E6  1.51E6
+    x3        0.0     2.4     4.8     7.2     9.6    12.0   Hour of day (0-24)
+             14.4    16.8    19.2    21.6    24.0
+    x3f01  -0.079  -0.090  -0.068   0.010   0.042   0.050   Fadd, Workdays
+            0.050   0.050   0.032   0.000  -0.079
+    x3f02   2.000   2.600   2.400  -0.100  -1.100  -1.600   Tradd  Workdays
+           -1.600  -1.600  -1.200  -0.000   2.000
+    x3f03  -0.060  -0.070  -0.060  -0.025   0.020   0.055   Fadd, Red days
+            0.055   0.055   0.055  -0.030  -0.060
+    x3f04   1.800   2.200   2.200   1.000  -0.500  -2.000   Tradd, Red days
+           -2.000  -2.000  -1.200   0.500   1.800
+    x3f05    -3.0    -3.3    -3.5    -3.3    -1.7     1.0   Toutdoor vs
+              2.0     1.0    -1.7    -2.5    -3.0            hour of day
+C
+C    Miscellaneous Data Table
+C    ------------------------
+C
+C    CaseId  Tinit  Hinit  Tsur  Resp   Comments
+C    1....6   Cels  m Lc   Cels   m/s    (text)
+C                                      
+     ******  x1f01  x1f02   7.0   300   --------
+C    
+C
+C    Heat Load Data Table     Fload=Ftod+Fadd     Two lines needed
+C    --------------------     Tret=Trtod+Tradd    for each case!!!
+C
+C    CaseId  -- Cat A --   -- Cat B --   -- Cat C --   -- Cat D --   -- Cat E --   -- Cat F --  Comments
+C    1....6  Fload   Tret  Fload  Tret   Fload   Tret  Fload   Tret  Fload  Tret   Fload   Tret  (text)
+C                                                                                     
+     ******  x1f03  x1f04  x1f03 x1f04   0.00   80.0   x1f03  x1f04  x1f03 x1f04   0.00   80.0  Ftod, Trtod
+             x3f01  x3f02   0.00   0.0   0.00    0.0   x3f01  x3f02   0.00   0.0   0.00    0.0  Fadd, Tradd
+C
+C
+C    Boiler/Heater/Cooler Set Point Table
+C    ------------------------------------   MFS: M - Max, F - Fix, S - Sta
+C
+C    CaseId  Boil  Boiler-Circuit-Data   Bypass-Circuit-Data   Comments
+C    1....6  ZnNr  Av  m2  MFS   W  kW   Tboil  Av  m2  Tpipe  (text)
+C
+     ******  SA11   x1s10  Max   x1s11   150.0  0.2000  x1f05  Heater 1+2
+C
+C
+C    Pipe System Boundary Settings     SA1 66: Subnet SA1,Link 66
+C    -----------------------------     SA  66: Zon SA, Pipe 66
+C
+C    CaseId  Pi/Li  I/O  Elev  Temp   Q/P   Value   Comments
+C    1....6  Zn  Nr  -    m     C      -    ----     (text)
+C
+     ******  SA1 66  I 2939.0  x1f04   P    1.00    R SA1 TH
+     ******  SA1 67  O 2939.0  x1f04   Q    0.010   R SA1 TH
+C
+C
+C    Pipe/Link Connection Settings    Etyp: Q,GP,T,DT,DH,AV,CV
+C    -----------------------------    
+C                                     
+C    CaseId  Connection Typ   Value   Comments    
+C    1....6    Zon Nr    --   -----    (text)     
+C                                                          
+     ******    SA7 02    CV   0.100   Demo 
+C
+C
+C    Controlling components    D: Drive for pump     Cond:x1,x2,x3
+C    ----------------------    V: Valve actuator     <: less than
+C
+C    CaseID  - Comp -    If true      then do     else do   Comments
+C    1....6  D/V ZnNr   Condition    -S/N- Ref   -S/N- Ref   (text)
+C
+     ******   D  SA11     x1<+10     0.900 101   0.500  03  SA1 Main pump
+     ******   D  SA12     x1<-17     0.905  00   0.000  00  SA1 Stand by
+     ******   D  SA71     x1<+10     0.900  03   0.000  00  SA7 Booster
+     ******   V  SA52     x1<+10     1.000  00   1.000  00  SA11 !!!
+C
+C
+C    Control Points       Ctrl codes: H,DH,Q,DQ,T,DT,W,DW
+C    --------------
+C
+C    Ref  Ctrl  Value Fctrl  Dir  ...Pos1...   ...Pos2...    Comments
+C    Nr   code   ---   ---   I/D  Pi/Li  B/E   Pi/Li  B/E     (text)
+C
+    101    DH   22.0   1.00   I   SB  05  E    SB  06  B     SB5  dH=12
+     03    DH   12.0  x1f19   I   SA  11  E    SA  12  B     SA11 dH=12
+     04    H    75.0   1.00   D   SA  12  B    -   --  -     SA11 R H=75
+     05    DH   22.0   1.00   I   SA1 11  -    SA1 12  -     Demo, Subnet
+     06    DH   20.0   1.00   I   SA  07  E    SA  08  B     SA7 dH=20
+C
+C
+C    Checkpoints, Screen Output Table
+C    --------------------------------
+C
+C    CaseID  Pipe Pos   Pipe Pos   Pipe Pos  Comments
+C    1....6  ZnNr B/E   ZnNr B/E   ZnNr B/E   (text)
+C
+     ******  SA03  B    SA04  E    SB01  B   --------
+C
+C

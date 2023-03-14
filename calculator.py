@@ -1,10 +1,18 @@
 import math
 import json
 
-epsi = 0.000001
+# Epsi
+epsilon = 0.000001
 
+# PROCEDURE CtrlList; input from set file 'control points'
+control_codes = ['H', 'DH', 'Q', 'DQ', 'T', 'DT', 'W', 'DW']
+
+# PROCEDURE EqList; input from con file
+equipment_types = ['Q', 'GP', 'T', 'DH', 'DT', 'NO', 'CV', 'AV', 'RV', 'VA', 'PU', 'BO', 'ST', 'GC']
+
+# FUNCTION DecF
 def cal_decf(value):
-    if abs(value) > epsi:
+    if abs(value) > epsilon:
         dec = (2-round(math.log(abs(value)/math.log(10)), 6))
     else:
         dec = 1
@@ -16,6 +24,9 @@ def cal_decf(value):
     
     decf = dec
     return decf
+
+# maxClose = 10;
+# SelPipe,ExPipe : array[1..maxClose] of integer;
 
 def read_file(file_name):
     with open(file_name) as f:
@@ -35,18 +46,6 @@ def cal_bolier():
     for key, value in boiler_data.items():
         print('value name', value['name'])
 
-def cal_reynolds(mFlow, D, T, P):
-    # mFlow : Mass flow                     [kg/s]
-    # D     : Inner diameter of the pipe    [mm]
-    # T     : Temperature of the water      [°C]
-    # P     : Hydraulic Static Pressure     [bar]
-
-    pi_number = 4 * math.atan(1)
-    reynolds = 4 * mFlow / pi_number * (D/1000) * P
-    print('reynolds: ', reynolds)
-    return reynolds
-
 # cal_decf(9)
 # read_file('./dummy/liquid.json')
 # cal_bolier()
-cal_reynolds(100, 20, 140, 2)

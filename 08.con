@@ -1,0 +1,432 @@
+C
+C   Pipe System Configuration File        File Name: 08.con
+C   ==============================        File Type: Text
+C
+C   Identification Strings     (max 40 char)
+C   ----------------------
+C   1........0.........0.........0.........0
+C
+    Name: No name
+    Date: 2023-01-01
+    Job : Cripplecreek, sf08
+C
+C
+C    Miscellaneous Data Table    Tinit should be close to liquid
+C    ------------------------    average temperature
+C
+C    Patm  Hinit Tinit Tsur K-fac  Comments
+C    bar   m Lc    C    C    --     (text)
+C                                
+     1.00  60.0  90.0  7.0  1.00    -----
+C    0.70  60.0  90.0  7.0  1.00    Cripple Creek ligger ca 3000 m�h
+C                                   vilket p�verkar Patm
+C                                                                
+C    Htol  Qtol  Ftol  Iter  Step  Resp1 Resp2 Re    Comments
+C    m Lc  m3/s   --    max   Nr    m/s   m/s  min    (text)
+C                                             
+     0.05 0.0001 0.20  1000  100   1000   300  100    --------
+C
+C
+C    Liquid Property Table
+C    ---------------------
+C       
+C    Temp  Density  Sp Heat  Pvapor  Viscosity Bulk E-mod Comments
+C    DegC   kg/m3   kJ/kg,C   bar      cSt      GN/m2      (text)
+C                                                       
+       0    999.8    4.218    0.006    1.752    2.00         
+      20    998.3    4.182    0.023    0.986    2.18                
+      40    992.3    4.179    0.074    0.646    2.27      Water
+      60    983.2    4.184    0.199    0.469    2.26      0-200 C
+      80    971.6    4.196    0.474    0.358    2.19    
+     100    958.6    4.216    1.013    0.295    2.10    
+     120    943.1    4.233    1.985    0.249    2.08    
+     140    926.0    4.269    3.614    0.215    2.06    
+     160    907.4    4.320    6.180    0.189    2.04    
+     180    887.0    4.387   10.027    0.170    2.02    
+     200    871.1    4.473   15.549    0.158    2.00    
+C
+C
+C    Pipe Performance Table
+C    ----------------------             
+C
+C    Pipe    Diam   Rough  Kval   E-mod  Thick  Wall Heat  Design P  Comments 
+C    Ref-Nr  Di mm  Ks mm  W/m,C  GN/m2   mm     MJ/m3,C    bar       (text)
+C
+      50A     54.5   0.10  0.423   210    2.9     3.60       16
+      65A     70.3   0.10  0.479   210    2.9     3.60       16
+      80A     82.5   0.10  0.501   210    3.2     3.60       16
+     100A    107.1   0.10  0.521   210    3.6     3.60       16
+     125A    132.5   0.10  0.512   210    3.6     3.60       16
+     150A    160.3   0.10  0.567   210    4.0     3.60       16
+     200A    210.1   0.10  0.729   210    4.5     3.60       16
+     250A    263.0   0.10  0.713   210    5.0     3.60       16      Typical
+     300A    312.7   0.10  0.819   210    5.6     3.60       16      for 
+     350A    344.4   0.10  1.027   210    5.6     3.60       16      District
+     400A    393.8   0.10  1.096   210    6.3     3.60       16      Heating
+     500A    495.4   0.10  1.069   210    6.3     3.60       16      PN16
+     600A    594.0   0.10  1.313   210    6.5     3.60       16
+     700A    694.0   0.10  1.519   210    6.7     3.60       16
+     800A    795.0   0.10  1.100   210    7.0     3.60       16
+    1000A   1009.9   0.10  1.100   210    7.0     3.60       16
+C
+C
+C    Pipe Reference Table
+C    --------------------
+C
+C    Pipe   Length    Loss   Pipe    Comments
+C    ZnNr     L m     Zeta   Ref-Nr  1.........12
+C$
+     SA03    1600      2.0   700A    F SA1 -> SA3
+     SA04    1600      2.0   700A    R SA3 -> SA1
+     SA05    2400      3.0   600A    F SA3 -> SA5
+     SA06    2400      3.0   600A    R SA5 -> SA3
+     SA07    2010      2.0   500A    F SA5 -> SA7
+     SA08    2010      2.0   500A    R SA7 -> SA5
+     SA09    2010      2.0   500A    F SA7 -> SA9
+     SA10    2010      2.0   500A    R SA9 -> SA7
+     SA11    2800      3.0   400A    F SA9 ->SA11
+     SA12    2800      3.0   400A    R SA11-> SA9
+     SB01     830      1.0   400A    F SA5 -> SB1
+     SB02     830      1.0   400A    R SB1 -> SA5
+     SB03    1570      2.0   400A    F SB1 -> SB3
+     SB04    1570      2.0   400A    R SB3 -> SB1
+     SB05    1000      2.0   300A    F SB3 -> SB5
+     SB06    1000      2.0   300A    R SB5 -> SB3
+C
+C    Pipe Connection Table            Equipments have the same
+C    ---------------------            Zone-prefix as the Connection 
+C
+C    Conn     Coordinates        Pipe   Equipm  Value   Pipe   Comments
+C    Zn Nr    x      y      z    P to   Typ Nr  -----   P fr   1.........12 
+C$
+     SA 08 942325 535996  2906   SA10    NO 00  -----   SA08   R SA7        
+     SB 01 942026 535732  2906   SB01    NO 00  -----   SB03   F SB1        
+     SB 02 942026 535732  2906   SB04    NO 00  -----   SB02   R SB1        
+C
+C
+C    Pipe Junction Table           Valves have the same Zone-prefix
+C    -------------------           as the junction.
+C
+C    Junc     Coordinates      Pipes...and...Valves...of...junction Comments
+C    Zn Nr   x        y    z   P1...V1  P2...V2  P3...V3  P4...v4   1.........12      x        y
+C$
+     SA 05 942017 535888 2912  SA05 00  SA00 00 -SA07 51 -SB01 53   F SA5  A->B     
+     SA 06 942017 535888 2912  SA08 52  SB02 54 -SA06 00  SA00 00   R SA5  B->A     
+C
+C
+C    Pipe Cross Connection Table       The Valve has the same 
+C    ---------------------------       zone-prefix as the Cross. 
+C
+C    Cross       Coordinates       Valve Forward/Return...Pipes  Comments
+C    Zn Nr     x     y     z    Nr   Pipe  Pipe  Pipe  Pipe   1.........12      x        y
+C$
+     SA 03 941631 535872 2915   00   SA03 -SA05  SA00  SA00   SA3, Hload..    
+                                     SA06 -SA04  SA00  SA00
+     SA 09 942717 536051 2924   00   SA09 -SA11  SA00  SA00   SA9, Hload      
+                                     SA12 -SA10  SA00  SA00
+     SA 11 943054 536336 2969   00   SA11  SA00  SA00  SA00   SA11,Hload      
+                                    -SA12  SA00  SA00  SA00
+     SB 03 942152 535408 2882   00   SB03 -SB05  SB00  SB00   SB3, Hload      
+                                     SB06 -SB04  SB00  SB00
+     SB 05 942121 535049 2875   00   SB05  SB00  SB00  SB00   SB5, Hload      
+                                    -SB06  SB00  SB00  SB00
+C                            
+C    Pipe/Link Border Connection Table
+C    ---------------------------------
+C
+C    Sub  Border      Coordinates         Pipe  Link   Comments
+C    Zon    Nr     x        y      z      ZnNr   Nr    1.........12
+C$
+     SA1    01  941008    536231  2939   -SA03   08    F SA1, ps      
+     SA1    02  941008    536231  2939    SA04  -01    R SA1, ss   
+     SA7    01  942325    535996  2906    SA07  -01    F SA7, ss      
+     SA7    02  942325    535996  2906   -SA09   06    F SA7, ps      
+C
+C
+C    Link Connection Table              Equipments have the same  
+C    ---------------------              zone-prefix as the subnet
+C
+C    Sub Lcn  Elev  Link  Equipm  Value   Link   Comments
+C    Zon  Nr   m    L to  Typ Nr  -----   L fr   1.........12
+C
+     SA1  01  21.0   04    PU 11  -----    06    Pump SA11
+     SA1  02  21.0   03    PU 12  -----    05    Pump SA12
+     SA1  04  21.0   07    BO 11  -----    08    Boiler SA11
+     SA1  68  21.0   68    VA 68  -----    69    Valve TH
+     SA7  01  22.2   03    PU 71  -----    05    Pump A71
+     SA7  02  22.2   02    CV 00  0.200    04    Checkvalve
+C                          RV 11  -----          Relief Valve   
+C
+C    Link Junction Table               Valves have the same  
+C    -------------------               zone-prefix as the subnet
+C
+C    Sub  Ljn  Elev  Links/Valves (L/V) of Junction   Comments
+C    Zon   Nr   m    L1 V1   L2 V2   L3 V3   L4 V4    1.........12
+C
+     SA1   01  21.0  01 00   69 00  -03 00  -04 00    SA1 Suction
+     SA1   02  21.0  05 00   06 00  -07 00   00 00    SA1 Pressure
+     SA1   66  21.0  66 00   00 00  -68 00  -67 00    SA1 TH
+     SA7   01  22.2  01 00   00 00  -02 00  -03 00    SA7 Suction
+     SA7   02  22.2  04 00   05 00  -06 00   00 00    SA7 Pressure
+C
+C
+C    Link Cross Connection Table         Valve (if Nr>0) and subnet 
+C    ---------------------------         have the same zone-prefix
+C
+C    Sub Lcs  Elev Valve Forward/Return...Links   Comments
+C    Zon  Nr   m    Nr   Link  Link  Link  Link   1.........12
+C
+     SB0  01  21.0  77    01   -03    00    00    Non-existent
+                          04   -02    00    00 
+C
+C
+C    Pipe System Boundary Conditions     SA1 66: Subnet SA1,Link Nr 66
+C    -------------------------------     SA  66: Zon SA,Pipe Nr 66
+C
+C    Pi/Li  I/O     Coordinates      Temp   Q/P   Value   Comments
+C    Zn  Nr  -    x        y    z     C      -    ----    1.........12 
+C$
+     SA1 66  I  1555787 6460286 32.0  65.0   P    1.00    R SA1 TH       
+     SA1 67  O  1555787 6460286 32.0  65.0   Q    0.010   R SA1 TH       
+C
+C
+C    Heat Exchanger Data Table   P/L To -->--  Primary  -->-- P/L Fr
+C    -------------------------   P/L Fr --<-- Secondary --<-- P/L To
+C
+C    HeatEx Perf Elev  Power   Primary/Secon circuit   Comments
+C    Zn  Nr  Ref  m   Heat kW  P/L To  Av m2  P/L Fr    (text)
+C
+     SB  00  03  21.0  35000    SB01  0.0170   SB16    Non-existent
+                                SA03  0.0210   SA05 
+     SA1 00  03  21.0  35000     01   0.0170    16     Non-existent
+                                 08   0.0210    03  
+C
+C
+C    Heat Exchanger Performance Table     Temperatures shall be valid
+C    --------------------------------     for declared heat power
+C
+C    Exch  Primary temp  Heat..transfer..data  Secondary temp  Comments
+C     Ref  High  C  Low  V-exp Mat  AdTm  Aps   High  C Low     (text)
+C
+      03   120.0   68.0  0.60 0.10 0.005 1.00   113.0   61.0   No ref
+C
+C
+C    Boiler/Heater/Cooler Performance Table
+C    ---------------------------------------
+C
+C    Boiler Boiler-Circuit-Data   Bypass-Circuit-Data    Comments
+C     ZnNr  Av  m2  MFS    W kW   Tboil  Av  m2  Tpipe   1.........12
+C
+      SA11  0.0420  Max  140000   150.0  0.1500  120.0   Heater SA1
+C
+C
+C    Heat Load Performance Table      Pload = Fload*Fsum*Pnom;
+C    ---------------------------      Qload = Pload/(Ra*Csp*(Tf-Tr);
+C                                      Qnom = Pnom/(Ra*Csp*dTnom);
+C    Fload  Tret C  Comments          Avmax = Qnom/sqrt(g*dHnom);
+C                                      Tret = Return temp, standard value
+     0.89    60.0   Default              Tr = Tret+dTr
+C
+C    Cross  Cat    Pnom  Fsum   dTr  dTnom  dHnom   Comments
+C    Zn  Nr ABCDEF   kW    --     C     C    m Lc     (text)
+C$
+     SA  03  A    42000  1.00   0.0  50.0   20.0    SA3-1
+     SA  09  A    28000  1.00   0.0  50.0   20.0    SA9
+     SA  11  A    30000  1.00   0.0  50.0   10.0    SA11
+     SB  03  A    20000  1.00   0.0  50.0   10.0    SB3
+     SB  05  A    15000  1.00   0.0  50.0   10.0    SB5
+C    SB1 01  A    15000  1.00   0.0  50.0   10.0    Demo: Subnet SB1,Lcs 01
+C
+C
+C    Relief Valve Performance Table      Hv=A+B*Q+C*Q*Q)
+C    ------------------------------      C=1/(g*Av*Av) when A=B=0
+C
+C    RVperf  A      B       C	     Comments
+C     Ref   mLq    ---     ---        (text)
+C
+      11    2.0    8.0     120.0      DN300 DPopen=0.2 bar
+      21   25.0    8.0     120.0      DN300 DPopen=2.5 bar
+C
+C
+C    Valve Reference Table    S=0 -> Hydraulically closed (Av=0)
+C    ---------------------    S=1 -> Fully opened (max Av)
+C
+C    Valve  --S--  Perf Comments       Valve  --S--  Perf  Comments
+C    ZnNr   0...1  Ref  1.........12   Z Nr   0...1  Ref   1.........12
+C
+     SA51   1.000  04   F SA5-SA       SA52   1.000  04    R SA5-SA
+     SA53   1.000  04   F SA5-SB       SA54   1.000  04    R SA5-SB
+     SA68   1.000  03   R SA1 TH       SA00   1.000  04    R  ---
+C
+C
+C    Valve Performance Table    Types: PRG,BUT,BAL,GAT,LIN,TAB
+C    -----------------------           TAB = Tabulated
+C
+C    Valve Valve Flow Capacity  Valve travel   Comments     
+C     Ref  type  Avp  m2   Avm   Smin  Smax    (text)      
+C                                            
+       01   BUT  0.0460 0.0460   0.00  0.87   DN 200, Regler 70 deg
+       02   BUT  0.0460 0.0460   0.00  0.75   DN 200, Regler 60 deg
+       03   BUT  0.0460 0.0460   0.00  1.00   DN 200, Avst 80 deg
+       04   PRG  0.2200 0.2200  -0.27  1.00   DN 400/300, Hc=71.0
+       05   PRG  0.4100 0.4100  -0.22  1.00   DN 500/400, Hc=73.5
+       06   TAB  0.4100 0.4100   0.00  1.00   Non-existing
+C
+C
+C    Tabulated Valve Performance  
+C    ---------------------------
+C
+C    TAB   Rel pos  Fi(s)  Fl(s)   Comments
+C     Nr   S = 0-1  0...1  0...1    (text)
+C
+      06    0.000   0.000  1.000   Linear valve
+            1.000   1.000  1.000   No pressure recovery
+C
+C  
+C    Pump Reference Table
+C    --------------------
+C
+C    Pump Perf  D2x   CheckValve  Drive   Comments
+C    ZnNr  Ref  ---   Y/N  Av m2   Ref    1.........12
+C
+     SA11   11  1.00   Y  0.3000   SA11   SA1 Main    
+     SA12   11  1.00   Y  0.3000   SA12   SA1 Stand by
+     SA71   71  1.00   N  0.2000   SA71   SA7 Booster 
+C
+C
+C    Pump Drive Table   FRE = Frequency converter  NON = Const Speed
+C    ----------------   HYD = Hydraulic coupling   N=Npump/Nmot
+C
+C    Drive  Motor Ratings   Variator  Nmax  --N--   Comments
+C    ZnNr   P kW Emot Nmot  Type Evar 0..1  0...1   1.........12
+C
+     SA11   600  0.97 1470  FRE  0.96 1.05  1.000   Pump SA11
+     SA12   600  0.97 1470  FRE  0.96 1.05  0.000   Pump SA12
+     SA71   132  0.97 1470  FRE  0.96 1.00  0.000   Pump SA71     
+C
+C
+C    Pump Performance Table
+C    ----------------------
+C
+C    Pump Nnom  Ptyp Pmek  Qnom    Hnom   Pnom   NPSH  Comments
+C     Ref rpm    Nr   kW   m3/s    m Lc    kW    m Lc   (text)
+C
+       11 1370   2   2.0   0.000   78.3   300.0   6.1   SA11
+                           0.200   76.0   375.0   6.0   Main pump
+                           0.400   74.2   450.0   7.1   Pump Ltd
+                           0.600   64.0   475.0  10.1   ABA-300
+                           0.800   42.0   475.0  16.1
+       71 1400   2   1.0   0.000   27.5    70.0   2.4   SA71
+                           0.116   26.5    80.0   2.3   Booster
+                           0.232   25.5    90.0   2.7   Pump Ltd
+                           0.349   22.0    98.0   3.9   ABA-250
+                           0.465   15.9    98.8   5.7
+C
+C
+C    Accumulator Data Table  Etyp: ST - Surge Tank
+C    ----------------------        GC - Gas Chamber
+C                                  Gasvolymen skall anges som normalkubikmeter
+C
+C    Accum  Flow Capacity  Diam  Etyp Elev Volume   Expo  Comments
+C    ZnNr   Avp  m2   Avm  D m    --  Z m  Gvol m3N Npol   (text)
+C
+     SA00   0.1000 0.0500  1.500  GC  50.1   2.0    1.20  No Gas Chamber
+     SA00   0.1000 0.0500  1.500  ST  ----   ----   ----  No Surge Tank
+C
+C
+C     Checkpoints, Screen Output Table
+C     --------------------------------
+C
+C     Pipe/Point  Pipe/Point  Pipe/Point   Comments
+C     ZnNr  B/E   ZnNr  B/E   ZnNr  B/E     (text)
+C
+      SA03   B    SA04   E    SB01   B      -------
+C
+C
+C     Pipe Pressure Alarm Table
+C     -------------------------
+C
+C     Pipe/Point  Elev   Pressure  Label   Comments
+C     ZnNr  B/E   Z  m   bar  H/L   ..      (text)
+C
+      SA00   B    21.0   10.0  H    SA     F SA1   Design pressure
+C
+C
+C
+C     Skalfaktorer till Kartor
+C     ------------------------
+C
+C Lista �ver giltiga projektioner
+C rt90_0.0_gon
+C rt90_2.5_gon_o
+C rt90_2.5_gon_v
+C rt90_5.0_gon_o
+C rt90_5.0_gon_v
+C rt90_7.5_gon_v
+C sweref_99_1200
+C sweref_99_1330
+C sweref_99_1415
+C sweref_99_1500
+C sweref_99_1545
+C sweref_99_1630
+C sweref_99_1715
+C sweref_99_1800
+C sweref_99_1845
+C sweref_99_2015
+C sweref_99_2145
+C sweref_99_2315
+C sweref_99_tm
+C ST_74
+C jonkoping
+C quatar
+C coloroado_south
+C
+C     Cross   Fl�deskap  Font   Subnet   Scale  Projektion      dx dy dz
+C$
+      0.03       300     50      100       --      --           -- -- -- Cad
+      1.0        0.6      7      100       2       --           -- -- -- Xfig
+      30          50     --       --       --   colorado_south   0 0 0   Google Eath
+C
+C
+C     Gr�nser p� f�rgskala f�r lastpunkter   
+C     ---------------------------------------
+C
+C      1      2      3      4      5      6   
+C$
+       10     20     30     40     50     60    Difftryck [mvp]
+     2870   2890   2900   2910   2920   2930    Plush�jd  [m]
+C
+C
+C     Gr�nser p� f�rgskala f�r r�r      
+C     ----------------------------------
+C
+C     [mvp/km]  [mvp/km]  [mvp/km]  [mvp/km]  [mvp/km]  [mvp/km]
+C$
+         2         4         6         8         10        12     Tryckfall [mvp/km]
+       0.2       0.4       0.6       0.8        1.0       1.2     Konvergenskontroll [mvp]
+       80         85       90        95         100       105     Framtemperatur [C]
+       30         35       40        45         50        55      Returtemperatur [C]
+C
+C     Val av f�rger f�r differenstryck
+C     --------------------------------
+C$
+       70     60      50     40     30     20   10              dxf
+     #ff3c00 #ff8600 #ffba00 #ffeb00 #efff00 #79ff00 #00fbff    xfig f�rgskala
+C    #000000 #8F8F8F #A9A9A9 #C0C0C0 #D3D3D3 #DCDCDC #F5F5F5    xfig gr�skala
+C    #FF0000 #D52A00 #AA5500 #808000 #55AA00 #2BD500 #00FF00    xfig r�tt -> gr�nt
+C    #FF0000 #D5002A #AA0055 #800080 #5500AA #2B00D5 #0000FF    xfig r�tt -> bl�tt
+C    #FF0000 #FF5500 #FFAA00 #FFFF00 #AAAA55 #5555AA #0000FF    xfig r�tt -> gult -> bl�tt
+C
+C
+C     Val av f�rger f�r tryckfall
+C     ---------------------------
+C
+C$
+       70     60     50      40     30     20   10              dxf
+     #ff3c00 #ff8600 #ffba00 #ffeb00 #efff00 #79ff00 #00fbff    xfig f�rgskala
+C    #000000 #8F8F8F #A9A9A9 #C0C0C0 #D3D3D3 #DCDCDC #F5F5F5    xfig gr�skala
+C    #FF0000 #D52A00 #AA5500 #808000 #55AA00 #2BD500 #00FF00    xfig r�tt -> gr�nt
+C    #FF0000 #D5002A #AA0055 #800080 #5500AA #2B00D5 #0000FF    xfig r�tt -> bl�tt
+C    #FF0000 #FF5500 #FFAA00 #FFFF00 #AAAA55 #5555AA #0000FF    xfig r�tt -> gult -> bl�tt
+C
+C
